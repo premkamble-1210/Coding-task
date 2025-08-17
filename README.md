@@ -46,8 +46,6 @@ npm run build
 npm run preview
 ```
 
-```
-```
 
 ---
 
@@ -65,6 +63,7 @@ For example:
 
 * Login Screen
   ![Login Screen](./screenshots/Screenshot7.png)
+  ![Login Screen](./screenshots/Screenshot8.png)
 
 * Owner Dashboard
   ![Signup Screen](./screenshots/Screenshot6.png)
