@@ -27,9 +27,15 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { name, email, address, password, role = 'USER' } = req.body;
+    let { name, email, address, password, role = 'USER' } = req.body;
 
     try {
+      // Check if users table is empty
+      const [users] = await pool.execute('SELECT COUNT(*) as count FROM users');
+      if (users[0].count === 0) {
+        role = 'ADMIN';
+      }
+
       const hash = await bcrypt.hash(password, 10);
 
       const [result] = await pool.execute(
@@ -38,7 +44,7 @@ router.post(
         [name, email, hash, address || null, role]
       );
 
-      return res.status(201).json({ user_id: result.insertId, message: 'User created successfully' });
+      return res.status(201).json({ user_id: result.insertId, message: 'User created successfully', role });
     } catch (e) {
       if (e.code === 'ER_DUP_ENTRY') {
         return res.status(409).json({ message: 'Email already exists' });
