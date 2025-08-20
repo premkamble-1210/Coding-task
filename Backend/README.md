@@ -54,6 +54,59 @@
 - `POST /api/ratings` - Add a new rating
 - `DELETE /api/ratings/:rating_id` - Delete a rating
 
+
+# ER Diagram 
+
+
+             ┌───────────────┐
+             │    users      │
+             ├───────────────┤
+             │ PK user_id    │
+             │ name          │
+             │ email         │
+             │ password_hash │
+             │ address       │
+             │ role          │
+             │ created_at    │
+             └───────┬───────┘
+                     │ 1
+                     │
+                     │ owns
+                     │
+                     ▼ N
+             ┌───────────────┐
+             │    stores     │
+             ├───────────────┤
+             │ PK store_id   │
+             │ name          │
+             │ email         │
+             │ address       │
+             │ category      │
+             │ phone         │
+             │ description   │
+             │ image_url     │
+             │ rating        │
+             │ reviewCount   │
+             │ FK owner_id   │
+             │ created_at    │
+             └───────┬───────┘
+                     │ 1
+                     │
+                     │ has
+                     │
+                     ▼ N
+             ┌───────────────┐
+             │   ratings     │
+             ├───────────────┤
+             │ PK rating_id  │
+             │ FK user_id    │
+             │ FK store_id   │
+             │ rating_value  │
+             │ comment       │
+             │ created_at    │
+             │ updated_at    │
+             └───────────────┘
+
 ## Notes
 - Make sure MySQL is running and accessible.
 - The backend will handle table creation automatically on first run.
