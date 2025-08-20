@@ -58,4 +58,4 @@
 - Make sure MySQL is running and accessible.
 - The backend will handle table creation automatically on first run.
 - Use the provided API endpoints for all CRUD operations.
-- ##The very first registered user will automatically be assigned the Admin role.
+- **The very first registered user will automatically be assigned the Admin role.**
