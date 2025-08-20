@@ -34,3 +34,4 @@ npm run preview
 * **Normal User**: sign up, log in, search stores, submit/modify ratings.
 * **System Administrator**: log in, manage stores and users, view dashboards and listings.
 * **Store Owner**: log in, view users who rated their store, check average rating.
+* **The very first registered user will automatically be assigned the Admin role.**
